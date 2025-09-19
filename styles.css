@@ -1,4 +1,24 @@
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 .calculator {
     border: 7px rgba(238, 236, 231, 0.802) solid;
     background-color: hsl(220, 30%, 40%);
+    border-radius: 10px;
+    height: 50vh;
+    width: 38vh;
+    display: flex;
+    flex-direction: column;
+    padding: 3vh;
+}
+
+.bottom-half-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: stretch;
+    gap: 3vh;
+}
+
+.bottom-half-button {
+    flex: 1;
 }

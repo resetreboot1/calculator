@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 3vh;
+    justify-content: stretch;
 }
 
 .bottom-half-container {
@@ -17,8 +18,22 @@ body {
     display: flex;
     justify-content: stretch;
     gap: 3vh;
+    flex: 1;
 }
 
 .bottom-half-button {
     flex: 1;
+}
+
+.top-half-container {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 8;
+}
+
+.top-half-button {
+    width: 23%;
+    height: 23%;
 }

@@ -51,4 +51,10 @@ body {
 
 .display {
     flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    color: antiquewhite;
+    background-color: color-mix(in hsl decreasing hue, whitesmoke 40%, rgba(144, 105, 58, 0.518) 60%);
+    border-radius: 10px;
 }

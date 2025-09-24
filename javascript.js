@@ -3,6 +3,10 @@ let bottomContainer = document.querySelector(".bottom-half-container")
 let display = document.querySelector(".display")
 
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+let operators = ["+", "-", "*", "/"]
+let tempArr = []
+let inputOperator = false;
+let stringSecondNumber;
 
 function add(a, b) {
  return a + b;
@@ -20,8 +24,8 @@ function divide(a, b) {
  return a / b;
 }
 
-let firstNumber;
-let secondNumber;
+let firstNumber = "";
+let secondNumber = "";
 let operator;
 
 function operate(num1, num2, operator) {
@@ -43,7 +47,28 @@ function operate(num1, num2, operator) {
 }
 
 topContainer.addEventListener("click", (e) =>{
-  if (numbers.includes( +e.target.textContent)) {
-    display.textContent = e.target.textContent;
+  if (numbers.includes(+e.target.textContent) 
+     && inputOperator === false) {
+    tempArr.push(e.target.textContent)
+    display.textContent = tempArr.join("");
+    firstNumber = display.textContent;
+  }
+
+  if (operators.includes(e.target.textContent) 
+     && firstNumber !== undefined
+     && inputOperator === false){
+    display.textContent += ` ${e.target.textContent} `;
+    inputOperator = true;
+    tempArr = [];
+    operator = e.target.textContent;
+  }
+
+  if (numbers.includes(+e.target.textContent)
+      && inputOperator === true){
+    tempArr.push(e.target.textContent)
+    display.textContent += tempArr.join("");
+    secondNumber += tempArr;
+    tempArr = [];
+
   }
 })

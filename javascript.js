@@ -62,7 +62,7 @@ topContainer.addEventListener("click", (e) =>{
   }
 
   if (operators.includes(e.target.textContent) 
-     && firstNumber !== undefined
+     && firstNumber !== ""
      && (inputOperator === false || inputOperator === "pending") ){
     display.textContent += ` ${e.target.textContent} `;
     inputOperator = true;

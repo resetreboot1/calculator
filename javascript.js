@@ -3,12 +3,15 @@ let bottomContainer = document.querySelector(".bottom-half-container")
 let display = document.querySelector(".display")
 let equalButton = document.querySelector("#equal-button")
 let clearButton = document.querySelector("#clear-button")
+let decimalButton = document.querySelector("#decimal-button")
+let backspaceButton = document.querySelector("#backspace-button")
 
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 let operators = ["+", "-", "*", "/"]
 let tempArr = []
 let inputOperator = false;
 let displayDigitsArray;
+let reverseDisplayDigitsArray;
 
 function add(a, b) {
  return (a + b);
@@ -52,7 +55,8 @@ topContainer.addEventListener("click", (e) =>{
   if (numbers.includes(+e.target.textContent) 
      && inputOperator === false) {
     tempArr.push(e.target.textContent)
-    display.textContent = tempArr.join("");
+    display.textContent += tempArr.join("");
+    tempArr = [];
     firstNumber = display.textContent;
     displayDigitsArray = display.textContent.split("")
     if (displayDigitsArray.length > 20){
@@ -111,7 +115,21 @@ clearButton.addEventListener("click", (e) => {
   inputOperator = false;
   display.textContent = '';
   tempArr = [];
+  reverseDisplayDigitsArray = [];
+  displayDigitsArray = [];
 })
 
+backspaceButton.addEventListener("click", (e) => {
+  reverseDisplayDigitsArray = displayDigitsArray.reverse();
+  if (operators.includes(reverseDisplayDigitsArray[1])) {
+    operator = "";
+    inputOperator = false;
+    for(let i = 1; i <= 3; i++) {
+      displayDigitsArray.shift();
+    }  
+    
+    display.textContent = displayDigitsArray.reverse().join("")
+  }
+})
 
 

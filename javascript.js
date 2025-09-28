@@ -144,7 +144,7 @@ backspaceButton.addEventListener("click", (e) => {
       } 
     }
     }
-  else if (inputOperator === true  || (inputOperator === "pending" && operators.includes(operator))) {
+  if (inputOperator === true  || (inputOperator === "pending" && operators.includes(operator))) {
       displayDigitsArray.pop();
       display.textContent = displayDigitsArray.join("")
       splitSecondNumber = secondNumber.split("")

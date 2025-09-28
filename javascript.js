@@ -12,6 +12,11 @@ let tempArr = []
 let inputOperator = false;
 let displayDigitsArray;
 let reverseDisplayDigitsArray;
+let splitSecondNumber;
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+
 
 function add(a, b) {
  return (a + b);
@@ -19,8 +24,12 @@ function add(a, b) {
 
 function subtract(a, b) {
  return (a - b);
-}
-
+}secondNumber = secondNumber.split("")
+                                 .splice(secondNumber.length - 1, 1)
+                                 .join("");
+secondNumber = secondNumber.split("")
+                                 .splice(secondNumber.length - 1, 1)
+                                 .join("");
 function multiply(a, b) {
  return (a * b);
 }
@@ -28,10 +37,6 @@ function multiply(a, b) {
 function divide(a, b) {
  return (a / b).toFixed(2);
 }
-
-let firstNumber = "";
-let secondNumber = "";
-let operator = "";
 
 function operate(num1, num2, operator) {
   if (operator === "-") {
@@ -100,6 +105,7 @@ equalButton.addEventListener("click", (e) => {
     inputOperator = "pending";
     firstNumber = display.textContent;
     secondNumber = "";
+    operator = "";
     displayDigitsArray = display.textContent.split("")
     if (displayDigitsArray.length > 20){
       display.textContent = "Error press clear";
@@ -120,15 +126,29 @@ clearButton.addEventListener("click", (e) => {
 })
 
 backspaceButton.addEventListener("click", (e) => {
-  reverseDisplayDigitsArray = displayDigitsArray.reverse();
-  if (operators.includes(reverseDisplayDigitsArray[1])) {
+  if (operators.includes(displayDigitsArray[displayDigitsArray.length -2])) {
     operator = "";
     inputOperator = false;
-    for(let i = 1; i <= 3; i++) {
-      displayDigitsArray.shift();
+    for(let i = 1; i < 3; i++) {
+      displayDigitsArray.pop();
     }  
     
-    display.textContent = displayDigitsArray.reverse().join("")
+    display.textContent = displayDigitsArray.join("")
+  }
+
+  if (numbers.includes(+displayDigitsArray[displayDigitsArray.length - 1])) {
+    if (inputOperator === false || (inputOperator === "pending" && operator === "")) {
+      displayDigitsArray.pop();
+      display.textContent = displayDigitsArray.join("")
+      firstNumber = display.textContent; 
+    }
+    else if (inputOperator === true  || (inputOperator === "pending" && operators.includes(operator))) {
+      displayDigitsArray.pop();
+      display.textContent = displayDigitsArray.join("")
+      splitSecondNumber = secondNumber.split("")
+      splitSecondNumber.pop()
+      secondNumber = splitSecondNumber.join("")
+    }
   }
 })
 

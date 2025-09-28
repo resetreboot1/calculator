@@ -19,19 +19,14 @@ let operator = "";
 
 
 function add(a, b) {
- return (a + b);
+ return (a + b).toFixed(2);
 }
 
 function subtract(a, b) {
- return (a - b);
-}secondNumber = secondNumber.split("")
-                                 .splice(secondNumber.length - 1, 1)
-                                 .join("");
-secondNumber = secondNumber.split("")
-                                 .splice(secondNumber.length - 1, 1)
-                                 .join("");
+ return (a - b).toFixed(2);
+}
 function multiply(a, b) {
- return (a * b);
+ return (a * b).toFixed(2);
 }
 
 function divide(a, b) {
@@ -138,17 +133,23 @@ backspaceButton.addEventListener("click", (e) => {
 
   if (numbers.includes(+displayDigitsArray[displayDigitsArray.length - 1]) || displayDigitsArray[displayDigitsArray.length - 1] === "." ) {
     if (inputOperator === false || (inputOperator === "pending" && operator === "")) {
-      displayDigitsArray.pop();
+      if (displayDigitsArray.length === 1) {
+        display.textContent = "0";
+        firstNumber = display.textContent;
+      } 
+
+      else {displayDigitsArray.pop();
       display.textContent = displayDigitsArray.join("")
-      firstNumber = display.textContent; 
+      firstNumber = display.textContent;
+      } 
     }
-    else if (inputOperator === true  || (inputOperator === "pending" && operators.includes(operator))) {
+    }
+  else if (inputOperator === true  || (inputOperator === "pending" && operators.includes(operator))) {
       displayDigitsArray.pop();
       display.textContent = displayDigitsArray.join("")
       splitSecondNumber = secondNumber.split("")
       splitSecondNumber.pop()
       secondNumber = splitSecondNumber.join("")
-    }
   }
 })
 

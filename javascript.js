@@ -136,7 +136,7 @@ backspaceButton.addEventListener("click", (e) => {
     display.textContent = displayDigitsArray.join("")
   }
 
-  if (numbers.includes(+displayDigitsArray[displayDigitsArray.length - 1])) {
+  if (numbers.includes(+displayDigitsArray[displayDigitsArray.length - 1]) || displayDigitsArray[displayDigitsArray.length - 1] === "." ) {
     if (inputOperator === false || (inputOperator === "pending" && operator === "")) {
       displayDigitsArray.pop();
       display.textContent = displayDigitsArray.join("")

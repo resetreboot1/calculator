@@ -13,6 +13,7 @@ let inputOperator = false;
 let displayDigitsArray;
 let reverseDisplayDigitsArray;
 let splitSecondNumber;
+let splitFirstNumber;
 let firstNumber = "";
 let secondNumber = "";
 let operator = "";
@@ -150,6 +151,29 @@ backspaceButton.addEventListener("click", (e) => {
       splitSecondNumber = secondNumber.split("")
       splitSecondNumber.pop()
       secondNumber = splitSecondNumber.join("")
+  }
+})
+
+
+decimalButton.addEventListener("click", (e) => {
+  if (!displayDigitsArray.includes(".") 
+      && inputOperator === false || "pending" 
+      && operator === "") {
+   displayDigitsArray.push(".")
+   display.textContent = displayDigitsArray.join("")
+   splitFirstNumber = firstNumber.split("");
+   splitFirstNumber.push(".")
+   firstNumber = splitFirstNumber.join("");
+  }
+
+  if (!displayDigitsArray.includes(".") 
+      && inputOperator === true 
+      && !(operators.includes(displayDigitsArray[displayDigitsArray.length - 2]))) {
+    displayDigitsArray.push(".")
+    display.textContent = displayDigitsArray.join("")
+    splitSecondNumber = secondNumber.split("")
+    splitSecondNumber.push(".")
+    secondNumber = splitSecondNumber.join("")
   }
 })
 

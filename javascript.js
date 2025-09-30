@@ -166,7 +166,7 @@ decimalButton.addEventListener("click", (e) => {
    firstNumber = splitFirstNumber.join("");
   }
 
-  if (!displayDigitsArray.includes(".") 
+  if (!secondNumber.split("").includes(".") 
       && inputOperator === true 
       && !(operators.includes(displayDigitsArray[displayDigitsArray.length - 2]))) {
     displayDigitsArray.push(".")
